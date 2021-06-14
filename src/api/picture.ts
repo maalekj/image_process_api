@@ -1,18 +1,18 @@
 import express from 'express';
 import fs from 'fs';
 import sharp from 'sharp';
+import path from 'path';
 
-const path = require('path');
 const absolutePath = path.resolve('.');
 const resources_path = absolutePath + '/res/origin-pictures/';
 const picture = express.Router();
 
 picture.get('/picture', async (req, res) => {
-  let picture_name: string = req.query.name as unknown as string;
-  let picture_high: number = parseInt(req.query.high as unknown as string);
-  let picture_width: number = parseInt(req.query.width as unknown as string);
-  let picturePath = resources_path + `/${picture_name}.jpg`;
-  console.log(
+    const picture_name: string = req.query.name as unknown as string;
+    const picture_high: number = parseInt(req.query.high as unknown as string);
+    const picture_width: number = parseInt(req.query.width as unknown as string);
+    const picturePath = resources_path + `/${picture_name}.jpg`;
+    console.log(
     `the name = ${picture_name}, the width = ${picture_width}, the high ${picture_high}`
   );
   if (!picture_name) {
@@ -59,7 +59,7 @@ picture.get('/picture', async (req, res) => {
     return;
   }
 
-  let processed_picture_path =
+  const processed_picture_path =
     absolutePath +
     `/res/processed-pictures/${picture_name}-${picture_width}-${picture_high}.jpeg`;
   if (!fs.existsSync(processed_picture_path)) {
