@@ -20,18 +20,18 @@ export async function processPicture(picture_name: string,picture_width:number,p
   }
   if (Number.isNaN(picture_high) || (picture_high < 10 && picture_high != 0)) {
     console.log(
-      'The high should be a number grater 10. Set 0 to get the origin high'
+      'The high should be a number grater 10.'
     );
-    throw new Error("The high should be a number grater 10. Set 0 to get the origin high");
+    throw new Error("The high should be a number grater 10.h");
   }
   if (
     Number.isNaN(picture_width) ||
     (picture_width < 10 && picture_width != 0)
   ) {
     console.log(
-      'The width should be a number grater 10. Set 0 to get the origin width'
+      'The width should be a number grater 10.'
     );
-    throw new Error("The width should be a number grater 10. Set 0 to get the origin width");
+    throw new Error("The width should be a number grater 10.");
 
   }
     let processed_picture_path =
