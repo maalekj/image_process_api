@@ -9,7 +9,7 @@ app.listen(port, () => {
 });
 
 app.get('/', (req, res) => {
-  res.send('The server is up');
+  res.send('The server is up.  to get a resized picture write this url with your variable: http://localhost:3000/api/picture?name=santamonica&width=200&high=200');
 });
 
 app.use('/api', picture);
