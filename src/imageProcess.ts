@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import sharp from 'sharp';
+import {exit} from 'process';
 
 const absolutePath = path.resolve('.');
 const resources_path = absolutePath + '/res/origin-pictures/';
@@ -15,10 +16,22 @@ export async function processPicture(
   //   `the name = ${picture_name}, the width = ${picture_width}, the high ${picture_high}`
   // );
   checkInput(picture_name, picture_width, picture_high);
-
   const processed_picture_path =
     absolutePath +
     `/res/processed-pictures/${picture_name}-${picture_width}-${picture_high}.jpeg`;
+
+  if (!fs.existsSync(absolutePath + '/res/processed-pictures/')) {
+    fs.mkdir('./res/processed-pictures/', (err): void => {
+      if (err) {
+        console.log(
+          'Error in creating a new directory for processed images : '
+        );
+        console.error(err);
+        exit;
+      }
+      console.log('Directory created successfully!');
+    });
+  }
 
   if (!fs.existsSync(processed_picture_path)) {
     // console.log('Processing the image');
