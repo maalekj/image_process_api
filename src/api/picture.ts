@@ -3,7 +3,7 @@ import {processPicture} from '../imageProcess';
 
 const picture = express.Router();
 
-picture.get('/picture', async (req, res) => {
+picture.get('/picture', async (req: express.Request, res: express.Response) => {
   const picture_name: string = req.query.name as unknown as string;
   const picture_high: number = parseInt(req.query.high as unknown as string);
   const picture_width: number = parseInt(req.query.width as unknown as string);
