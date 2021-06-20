@@ -1,6 +1,6 @@
-import {checkInput} from '../imageProcess';
+import {checkInput, processPicture} from '../imageProcess';
 
-describe('test the image processing function', () => {
+describe('test check input function', () => {
   it('expect checkInput("", 200, 200) to throw error of "please provde a name to the picture in the url ...." ', () => {
     expect(() => {
       checkInput('', 200, 200);
@@ -27,5 +27,18 @@ describe('test the image processing function', () => {
     expect(() => {
       checkInput('santamonica', 200, 200);
     }).not.toThrowError();
+  });
+});
+
+describe('test the image process function', () => {
+  it('expect processPicture("santamonica", 200, 200) to not throw error', async (done) => {
+    let res: string = '';
+    try {
+      res = await processPicture('santamonica', 200, 200);
+    } catch (e) {
+      res = 'error';
+    }
+    expect(res).not.toBe('error');
+    done();
   });
 });
